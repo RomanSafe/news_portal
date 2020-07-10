@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "news/general_style.css" %}" type="text/css" media="screen">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div id="content">
+        {% block content %}
+        <h2>Hyper news</h2>
+
+        <form action="/news/" method="get">{% csrf_token %}
+        <p>{{ searchform }}
+        <button type="submit">Find</button></p>
+        </form>
+        {% for date, posts in news.items %}
+            <h4>{{ date }}</h4>
+            <ul>
+            {% for post in posts %}
+                <li><a target="_blank" href="/news/{{ post.link }}/">{{ post.title }}</a></li>
+            {% endfor %}
+            </ul>
+        {% endfor %}
+        <a target="_blank" href="/news/create/">To create a future page click here.</a>
+        {% endblock %}
+    </div>
+</body>
+</html>

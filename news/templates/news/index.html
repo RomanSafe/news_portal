@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% load static %}
+    <link rel="stylesheet" href="{% static "/news/general_style.css" %}" type="text/css" media="screen">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <h2>{{ news_object.title }}</h2>
+    <p>{{ date_time }}</p>
+    <p>{{ news_object.text }}</p>
+    <a target="_blank" href="/news/">Come back to the main page.</a>
+</body>
+</html>
